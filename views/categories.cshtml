@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>To Do List</title>
+  </head>
+  <body>
+    <h1>Categories</h1>
+    @foreach (var category in Model) {
+      <h3><a href="/categories/@category.GetId()">@category.GetName()</a></h3>
+    }
+    <a href="/">Back home</a>
+  </body>
+</html>
