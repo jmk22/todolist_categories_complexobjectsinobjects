@@ -5,11 +5,17 @@
   <body>
     <h3>Here are all the tasks in this category:</h3>
 
-    @foreach (var task in @Model["tasks"]) {
-      <h3>@task.GetDescription()</h3>
+    @if (@Model["tasks"].Count == 0){
+      <p>No tasks have been added yet! Why not <a href='/categories/@Model["category"].GetId()/tasks/new'>add one</a>?</p>
+    } else {
+      <ol>
+      @foreach (var task in @Model["tasks"]) {
+        <li>@task.GetDescription()</li>
+      }
+      </ol>
+      <p><a href='/categories/@Model["category"].GetId()/tasks/new'>Add a new task</a></p>
     }
 
-    <a href='/categories/@Model["category"].GetId()/tasks/new'>Add a new task</a>
-    <a href="/">Return to Main Page</a>
+    <p><a href="/">Return to Main Page</a></p>
   </body>
 </html>
